@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,8 +33,7 @@ public class User implements UserDetails {
 	
 	private LocalDateTime modified = LocalDateTime.now();
 	
-	@OneToOne(mappedBy = "user")
-	private LoginSession loginSession;
+	private LocalDateTime last_login = LocalDateTime.now();
 	
 	@OneToMany(mappedBy = "user")
 	private List<Phone> phones = new ArrayList<>();
@@ -79,14 +77,6 @@ public class User implements UserDetails {
 
 	public void setPhones(List<Phone> phones) {
 		this.phones = phones;
-	}
-
-	public LoginSession getLoginSession() {
-		return loginSession;
-	}
-
-	public void setLoginSession(LoginSession loginSession) {
-		this.loginSession = loginSession;
 	}
 
 	public LocalDateTime getCreationDate() {
@@ -137,6 +127,14 @@ public class User implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+
+	public LocalDateTime getLast_login() {
+		return last_login;
+	}
+
+	public void setLast_login(LocalDateTime last_login) {
+		this.last_login = last_login;
 	}
 	
 }

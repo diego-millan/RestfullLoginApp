@@ -1,4 +1,4 @@
-package br.com.loginapplication.login.config.validate;
+package br.com.loginapplication.login.config.validate.dto;
 
 public class InvalidFormDTO {
 	private String field;

@@ -22,10 +22,9 @@ public class AuthenticationService implements UserDetailsService{
 		Optional<User> user = userRepository.findByEmail(username);
 		
 		if (!user.isPresent()) {
-			throw new UsernameNotFoundException("Usu·rio e/ou senha inv·lidos");
+			throw new UsernameNotFoundException("Usu√°rio e/ou senha inv√°lidos");
 		}
 		
 		return user.get();
 	}
-
 }

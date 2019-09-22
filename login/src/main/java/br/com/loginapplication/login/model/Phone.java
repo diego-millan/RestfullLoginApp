@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-//@Table(name="tbl_phone")
 public class Phone {
 	
 	@Id

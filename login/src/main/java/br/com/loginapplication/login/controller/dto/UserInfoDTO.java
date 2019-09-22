@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+
 import br.com.loginapplication.login.model.Phone;
 import br.com.loginapplication.login.model.User;
 
@@ -12,22 +14,33 @@ public class UserInfoDTO {
 	private String email;
 	private List<PhoneDTO> phones;
 	private Long id;
-	private LocalDateTime creationDate = LocalDateTime.now();
+	private LocalDateTime creationDate;
 	private LocalDateTime modified;
-	private LoginSessionDTO loginSessionDTO;
+	private LocalDateTime last_login;
+	private String token;
 	
-	public UserInfoDTO(User user) {
+	public UserInfoDTO(User user, TokenDTO tokenDTO) {
 		this.username = user.getName();
 		this.email = user.getEmail();
 		this.id = user.getId();
-		this.loginSessionDTO = new LoginSessionDTO(user.getLoginSession());
+		this.last_login = user.getLast_login();
+		this.modified = user.getModified();
+		this.creationDate = user.getCreationDate();
 		
 		this.phones = new ArrayList<PhoneDTO>();
 		for (Phone phone : user.getPhones()) {
 			phones.add(new PhoneDTO(phone));
 		}
+		
+		if (tokenDTO != null) {
+			this.token = tokenDTO.getToken();
+		}
 	}
 
+	public UsernamePasswordAuthenticationToken createAuthenticationToken(String password) {
+		return new UsernamePasswordAuthenticationToken(email, password);
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -60,14 +73,6 @@ public class UserInfoDTO {
 		this.id = id;
 	}
 
-	public LoginSessionDTO getLoginSessionDTO() {
-		return loginSessionDTO;
-	}
-
-	public void setLoginSessionDTO(LoginSessionDTO loginSessionDTO) {
-		this.loginSessionDTO = loginSessionDTO;
-	}
-
 	public LocalDateTime getCreationDate() {
 		return creationDate;
 	}
@@ -82,5 +87,21 @@ public class UserInfoDTO {
 
 	public void setModified(LocalDateTime modified) {
 		this.modified = modified;
+	}
+
+	public LocalDateTime getLast_login() {
+		return last_login;
+	}
+
+	public void setLast_login(LocalDateTime last_login) {
+		this.last_login = last_login;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 }

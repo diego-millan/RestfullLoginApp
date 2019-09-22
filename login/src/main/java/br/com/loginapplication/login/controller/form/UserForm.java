@@ -6,6 +6,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import br.com.loginapplication.login.model.Phone;
 import br.com.loginapplication.login.model.User;
@@ -42,6 +43,12 @@ public class UserForm {
 		this.password = password;
 	}
 	
+	public List<Phone> getPhones() {
+		return phones;
+	}
+	public void setPhones(List<Phone> phones) {
+		this.phones = phones;
+	}
 	public User convert() {
 		User user = new User();
 		user.setName(name);
@@ -49,5 +56,8 @@ public class UserForm {
 		user.setEmail(email);
 		user.setPhones(phones);
 		return user;
+	}
+	public UsernamePasswordAuthenticationToken createAuthenticationToken() {
+		return new UsernamePasswordAuthenticationToken(email, password);
 	}
 }
