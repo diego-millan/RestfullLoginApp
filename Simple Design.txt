@@ -1,0 +1,44 @@
+Simple Design 
+
+==== Sistema de Login - Spring MVC =====
+
+[ Versionamento ]
+- Criar conta no Heroku - Done
+- Baixar Sourcetree - Done
+- Configurar GIT - Done
+
+[ Infra do Projeto ]
+- Configurar o Gradle + Eclipse - Done
+- Configurar um banco de dados HSQLDB - Done
+- Configurar Tabelas conforme requisitos - Done
+
+- Entender JWT
+
+[ Aplicação ]
+- Criar pacotes da aplicação - Done
+- Criar as camadas de aplicação  Done
+- Criar Controller com teste inicial - Done
+- Criar mensagens de erro
+
+
+Requisitos
+
+- Banco de dados em memória, como HSQLDB. - OK
+- Processo de build via Gradle. - OK
+- Persistência com Hibernate. - OK
+- Framework Spring. - OK
+- Prazo de 4 dias corridos.
+- Entregar um repo público (github ou bitbucket) com o código fonte. - OK
+- Entregar a API rodando em algum host (Heroku, AWS, etc) na porta 80 ou 443.
+	Ver: https://medium.com/@manajitpal/auto-deployment-using-bitbucket-and-heroku-521b4271cc27
+	https://devcenter.heroku.com/articles/java-webapp-runner#prerequisites
+- Servidor Tomcat ou Jetty Embedded - OK
+- Java 7+ - OK
+
+Requisitos desejáveis
+
+- JWT como token
+- Testes unitários
+- Criptogafia não reversível (hash) na senha e no token
+
+[java -cp ./lib/hsqldb.jar org.hsqldb.util.DatabaseManagerSwing]
