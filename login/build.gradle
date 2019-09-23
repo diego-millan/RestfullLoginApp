@@ -15,8 +15,6 @@ configurations {
 	}
 }
 
-task stage(dependsOn: ['clean', 'installDist'])
-
 repositories {
 	mavenCentral()
 }
