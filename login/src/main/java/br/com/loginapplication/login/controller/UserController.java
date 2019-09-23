@@ -74,7 +74,7 @@ public class UserController {
 		} else {
 			
 			user.setPassword(passwordEncoder.encode(userForm.getPassword()));
-			System.out.println("User password: " + user.getPassword());
+			// System.out.println("User password: " + user.getPassword());
 			userRepository.save(user);
 
 			ResponseEntity<UserInfoDTO> userInfoDTO = authenticateCreatedUser(userForm);
